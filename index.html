@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskManagementApp</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>My To-Do Lists</h1>
+      <h3>New Task Creation</h3>
+      <div class="saparator"></div>
+      <form id="form">
+        <div class="task_name">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="task_priority">
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+                <option value="select" disabled>Select One</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+        <div class="task_date">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" required>
+        </div>
+        <div class="task_submit">
+            <input type="submit" value="Add Now" name="add">
+        </div>
+      </form>
+      <h3>New Task Creation</h3>
+      <div class="saparator"></div>
+      <div class="tools">
+        <div class="search">
+            <label for="search_name">Search:</label>
+            <input type="search" id="search_name">
+        </div>
+        <div class="search">
+            <label for="search_name">Search:</label>
+            <input type="search" id="search_name">
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
