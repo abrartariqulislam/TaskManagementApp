@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskManagementApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,38 +14,83 @@
       <div class="saparator"></div>
       <form id="form">
         <div class="task_name">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required />
         </div>
         <div class="task_priority">
-            <label for="priority">Priority</label>
-            <select name="priority" id="priority">
-                <option value="select" disabled>Select One</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
+          <label for="priority">Priority</label>
+          <select name="priority" id="priority">
+            <option value="select" disabled>Select One</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
         </div>
         <div class="task_date">
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date" required>
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date" required />
         </div>
         <div class="task_submit">
-            <input type="submit" value="Add Now" name="add">
+          <input type="submit" value="Add Now" name="add" />
         </div>
       </form>
       <h3>New Task Creation</h3>
       <div class="saparator"></div>
       <div class="tools">
         <div class="search">
-            <label for="search_name">Search:</label>
-            <input type="search" id="search_name">
+          <label for="search_name">Search:</label>
+          <input type="search" id="search_name" />
         </div>
-        <div class="search">
-            <label for="search_name">Search:</label>
-            <input type="search" id="search_name">
+        <div class="filter">
+          <label for="filtering">Filter:</label>
+          <select name="filter" id="filtering">
+            <option value="all">All</option>
+            <option value="all">Complete</option>
+            <option value="all">Incomplete</option>
+            <option value="today">Today</option>
+            <option value="high">High priority</option>
+            <option value="medium">Medium priority</option>
+            <option value="low">Low priority</option>
+          </select>
         </div>
+        <div class="sort">
+          <label for="sorting">Sort:</label>
+          <select name="sort" id="sorting">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+        <div class="by_date">
+            <label for="by_date">By Date:</label>
+            <input type="date" name="by_date" id="by_date" />
+          </div>
       </div>
+      <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Task Name</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Playing Cricket</td>
+                <td>High</td>
+                <td>Incomplete</td>
+                <td>08/06/2023</td>
+                <td>
+                    <button class="delete"><i class="fas fa-solid fa-trash-can"></i></button>
+                    <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
     </main>
   </body>
 </html>
