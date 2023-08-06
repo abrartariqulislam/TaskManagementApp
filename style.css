@@ -12,5 +12,112 @@ a{
     text-decoration: none;
 }
 body{
-    background-color: rgb(197, 143, 247);
+    background-color: #ecb3ab5d;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+main{
+    background-color: #B9ABEE;
+    flex-basis: 1000px;
+    height: 95vh;
+    border-radius: 25px;
+    padding: 30px;
+}
+h1{
+    text-align: center;
+    color: #f8d1eb;
+    font-size: 36px;
+    text-transform: uppercase;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+h1::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background-color: aqua;
+}
+h3{
+    color: #baf8c0;
+    font-size: 24px;
+    padding: 10px 0;
+}
+.separator{
+    width: 100%;
+    height: 1px;
+    background-color: #4C012C;
+}
+#form{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px 0;
+}
+.task_name{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color:#00397a ;
+    font-size: 18px;
+    flex-grow: 1;
+}
+.task_name input{
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border: unset;
+    background-color: #CBCBAA;
+    font-size: 18px;
+}
+
+.task_priority{
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+    color:#00397a ;
+    font-size: 18px;
+}
+.task_priority select{
+    padding: 10px;
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    border: unset;
+    background-color: #CBCBAA;
+    font-size: 18px;
+}
+.task_date{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color:#00397a ;
+    font-size: 18px;
+}
+.task_date input{
+    padding: 10px;
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    border: unset;
+    background-color: #CBCBAA;
+    font-size: 18px;
+}
+.task_submit input{
+    padding: 10px;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: unset;
+    background-color: #42d369;
+    font-size: 18px;
+}
+

@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskManagementApp</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
       <h1>My To-Do Lists</h1>
       <h3>New Task Creation</h3>
-      <div class="saparator"></div>
+      <div class="separator"></div>
       <form id="form">
         <div class="task_name">
           <label for="name">Name</label>
@@ -35,7 +38,7 @@
         </div>
       </form>
       <h3>New Task Creation</h3>
-      <div class="saparator"></div>
+      <div class="separator"></div>
       <div class="tools">
         <div class="search">
           <label for="search_name">Search:</label>
@@ -61,34 +64,40 @@
           </select>
         </div>
         <div class="by_date">
-            <label for="by_date">By Date:</label>
-            <input type="date" name="by_date" id="by_date" />
-          </div>
+          <label for="by_date">By Date:</label>
+          <input type="date" name="by_date" id="by_date" />
+        </div>
       </div>
       <table>
         <thead>
-            <tr>
-                <th>No.</th>
-                <th>Task Name</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Action</th>
-            </tr>
+          <tr>
+            <th>No.</th>
+            <th>Task Name</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Playing Cricket</td>
-                <td>High</td>
-                <td>Incomplete</td>
-                <td>08/06/2023</td>
-                <td>
-                    <button class="delete"><i class="fas fa-solid fa-trash-can"></i></button>
-                    <button class="check"><i class="fa-solid fa-circle-check"></i></button>
-                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                </td>
-            </tr>
+          <tr>
+            <td>1</td>
+            <td>Playing Cricket</td>
+            <td>High</td>
+            <td>Incomplete</td>
+            <td>08/06/2023</td>
+            <td>
+              <button class="delete">
+                <i class="fas fa-solid fa-trash-can"></i>
+              </button>
+              <button class="check">
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+              <button class="edit">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </main>
