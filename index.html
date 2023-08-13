@@ -68,6 +68,26 @@
           <input type="date" name="by_date" id="by_date" />
         </div>
       </div>
+      <div class="edit_area">
+        <input type="button" value="Delete">
+        <select name="priority" id="priority">
+          <option value="select" disabled selected>Change priority</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <select name="status">
+          <option value="select" disabled selected>Change status</option>
+          <option value="high">Complete</option>
+          <option value="medium">Incomplete</option>
+        </select>
+        <input type="text" placeholder="Modify the name">
+        <select name="date">
+          <option value="high">Name</option>
+          <option value="medium">Date</option>
+        </select>
+        <button class="close_btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
       <table>
         <thead>
           <tr>
