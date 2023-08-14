@@ -161,6 +161,46 @@ select:focus {
   background-color: #cbcbaa;
   font-size: 18px;
 }
+.edit_area {
+  background-color: #cbcbaa;
+  padding:10px 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.edit_area .edit_area_delete_btn{
+  background-color: #8a004e;
+  color: #fff;
+  border: unset;
+}
+.edit_area input ,.edit_area select{
+  height: 35px;
+  background-color: unset;
+  border: 2px solid #4c012c;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 18px;
+}
+.edit_area input:focus,.edit_area select:focus{
+  outline: unset;
+}
+.edit_area .close_area{
+flex-grow: 1;
+display: flex;
+justify-content: flex-end;
+}
+.edit_area .close_area .close_btn{
+  height: 35px;
+  width: 35px;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  border: unset;
+  font-size: 18px;
+}
 table,
 thead,
 tbody,
