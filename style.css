@@ -21,7 +21,7 @@ body {
 main {
   background-color: #b9abee;
   flex-basis: 1000px;
-  height: 95vh;
+  min-height: 95vh;
   border-radius: 25px;
   padding: 30px;
 }
