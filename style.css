@@ -277,7 +277,7 @@ table tr th:nth-of-type(2) {
   height: 25px;
   width: 25px;
   border-radius: 8px;
-  background-color: #09ffe6;
+  background-color: #baf8c0;
 }
 .checkbox_container .checkmark_1{
   top: 50%;
@@ -308,12 +308,12 @@ table tr th:nth-of-type(2) {
 
 /* Style the checkmark/indicator */
 .checkbox_container .checkmark:after {
-  top: 2px;
+  top: 3px;
   left:7px;
   width: 8px;
   height: 12px;
-  border: solid #fff;
-  border-radius: 2px;
+  border: solid #ffffff;
+  border-radius: 4px;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
