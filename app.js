@@ -10,7 +10,7 @@ form.addEventListener("submit", (e) => {
   });
   task.id = Math.floor(Math.random() * 10000 + 1000);
   addLocalStorage(task);
-  console.log(task);
+  e.target.reset()
 });
 
 // get form local storage
@@ -38,7 +38,7 @@ function taskDisplay() {
         <span class="checkmark checkmark_1"></span>
       </label>
     </td>
-    <td>${index}</td>
+    <td>${index +1}</td>
     <td>${name}</td>
     <td>${priority}</td>
     <td>${status || "Incomplete"}</td>
