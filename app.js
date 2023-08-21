@@ -1,5 +1,9 @@
 const form = document.getElementById("form");
 const tbody = document.getElementById("tbody");
+const date = document.querySelector("#date")
+const toDay = new Date()
+
+date.value = toDay.toISOString().slice(0,10)
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
