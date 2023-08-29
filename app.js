@@ -33,7 +33,7 @@ function addLocalStorage(task) {
 function taskDisplay() {
   const tasks = getFormLocalStorage();
   tbody.innerHTML =""
-  tasks?.map(({name,priority,date,status}, index) => {
+  tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
     <td>
@@ -48,7 +48,7 @@ function taskDisplay() {
     <td>${status || "Incomplete"}</td>
     <td>${date}</td>
     <td>
-      <button class="btn delete">
+      <button class="btn delete" onclick="deleteTask(${id})">
         <i class="fas fa-solid fa-trash-can"></i>
       </button>
       <button class="btn check">
@@ -63,3 +63,15 @@ function taskDisplay() {
 };
 
 taskDisplay()
+
+function deleteTask(id){
+  const tasks = getFormLocalStorage();
+  const newTask = tasks.filter(task => {
+    if (task.id !== id){
+      return true
+    }
+  })
+  localStorage.setItem("tasks", JSON.stringify(newTask));
+  taskDisplay();
+  console.log(newTask);
+}
