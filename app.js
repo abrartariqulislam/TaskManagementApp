@@ -13,6 +13,7 @@ form.addEventListener("submit", (e) => {
     if (element.name) task[element.name] = element.value;
   });
   task.id = Math.floor(Math.random() * 10000 + 1000);
+  task.status = "Incomplete"
   addLocalStorage(task);
   e.target.reset()
 });
@@ -45,13 +46,13 @@ function taskDisplay() {
     <td>${index +1}</td>
     <td>${name}</td>
     <td>${priority}</td>
-    <td>${status || "Incomplete"}</td>
+    <td>${status}</td>
     <td>${date}</td>
     <td>
       <button class="btn delete" onclick="deleteTask(${id})">
         <i class="fas fa-solid fa-trash-can"></i>
       </button>
-      <button class="btn check">
+      <button class="btn check" onclick="changeTaskStatus(${id})">
         <i class="fa-solid fa-circle-check"></i>
       </button>
       <button class="btn edit">
@@ -73,5 +74,19 @@ function deleteTask(id){
   })
   localStorage.setItem("tasks", JSON.stringify(newTask));
   taskDisplay();
-  console.log(newTask);
+}
+function changeTaskStatus(id){
+  const tasks = getFormLocalStorage();
+  const newTask = tasks.map(task =>{
+    if(task.id === id){
+      if(task.status === "Incomplete"){
+        task.status = "Completed"
+      }else{
+        task.status = "Incomplete"
+      }
+    }
+    return task
+  })
+  localStorage.setItem("tasks", JSON.stringify(newTask));
+  taskDisplay();
 }
