@@ -5,6 +5,7 @@ const toDay = new Date()
 
 date.value = toDay.toISOString().slice(0,10)
 
+// form Submit
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputElement = e.target.elements;
@@ -18,7 +19,7 @@ form.addEventListener("submit", (e) => {
   e.target.reset()
 });
 
-// get form local storage
+// get data form local storage
 function getFormLocalStorage(key = "tasks") {
   let tasks = JSON.parse(localStorage.getItem(key)) || [];
   return tasks;
@@ -55,7 +56,7 @@ function taskDisplay() {
       <button class="btn check" onclick="changeTaskStatus(${id})">
         <i class="fa-solid fa-circle-check"></i>
       </button>
-      <button class="btn edit">
+      <button class="btn edit" onclick="editTask(${id})>
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
     </td>`;
@@ -65,6 +66,7 @@ function taskDisplay() {
 
 taskDisplay()
 
+// Delete Task
 function deleteTask(id){
   const tasks = getFormLocalStorage();
   const newTask = tasks.filter(task => {
@@ -75,6 +77,8 @@ function deleteTask(id){
   localStorage.setItem("tasks", JSON.stringify(newTask));
   taskDisplay();
 }
+
+// Change Task Status 
 function changeTaskStatus(id){
   const tasks = getFormLocalStorage();
   const newTask = tasks.map(task =>{
