@@ -37,6 +37,7 @@ function taskDisplay() {
   tbody.innerHTML =""
   tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
+    tr.id = `task_${id}`
     tr.innerHTML = `
     <td>
       <label class="checkbox_container">
@@ -45,18 +46,18 @@ function taskDisplay() {
       </label>
     </td>
     <td>${index +1}</td>
-    <td>${name}</td>
-    <td>${priority}</td>
+    <td class="taskName">${name}</td>
+    <td class="taskPriority">${priority}</td>
     <td>${status}</td>
-    <td>${date}</td>
-    <td>
+    <td class="taskDate">${date}</td>
+    <td class="action">
       <button class="btn delete" onclick="deleteTask(${id})">
         <i class="fas fa-solid fa-trash-can"></i>
       </button>
       <button class="btn check" onclick="changeTaskStatus(${id})">
         <i class="fa-solid fa-circle-check"></i>
       </button>
-      <button class="btn edit" onclick="editTask(${id})>
+      <button class="btn edit" onclick="editTask(${id})">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
     </td>`;
@@ -93,4 +94,38 @@ function changeTaskStatus(id){
   })
   localStorage.setItem("tasks", JSON.stringify(newTask));
   taskDisplay();
+}
+
+// edit Task
+function editTask(id){
+  const tr = document.querySelector(`#task_${id}`)
+
+// name
+  const taskNameElement = tr.querySelector(".taskName")
+  const taskName = taskNameElement.textContent
+  const taskNameInput = document.createElement("input")
+  taskNameElement.textContent = ""
+  taskNameInput.value = taskName
+  taskNameElement.appendChild(taskNameInput)
+
+// priority
+const taskPriorityElement = tr.querySelector(".taskPriority")
+const taskPriority = taskPriorityElement.textContent
+const taskPriorityInput = document.createElement("select")
+taskPriorityInput.innerHTML = `
+<option value="select" disabled>Select One</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>`
+
+// Date
+const taskDateElement = tr.querySelector(".taskDate")
+const taskDate = taskDateElement.textContent
+
+// action
+const actionElement = tr.querySelector(".action")
+const actionButtons = actionElement.innerHTML
+
+
+  console.log(taskName,taskPriority,taskDate,actionButtons);
 }
