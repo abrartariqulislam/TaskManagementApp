@@ -121,7 +121,6 @@ taskPriorityInput.innerHTML = `
 
 taskPriorityElement.appendChild(taskPriorityInput)
 
-console.log(taskPriority );
 
 
 // Date
@@ -143,5 +142,27 @@ saveBtn.innerHTML= `
 actionElement.innerHTML = ""
 actionElement.appendChild(saveBtn)
 
+// save  btn
+saveBtn.onclick = function (){
+  const newTaskName = taskNameInput.value
+  const newTaskPriority = taskPriorityInput.value
+  const newTaskDate = taskDateInput.value
+
+  const tasks = getFormLocalStorage();
+  const newTask = tasks.map(task =>{
+    if(task.id === id){
+      return{
+        ...task,
+        name: newTaskName,
+        priority:newTaskPriority,
+        date:newTaskDate
+      }
+
+    }
+    return task
+  })
+  localStorage.setItem("tasks", JSON.stringify(newTask));
+  taskDisplay()
+}
 
 }
