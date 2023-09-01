@@ -112,20 +112,36 @@ function editTask(id){
 const taskPriorityElement = tr.querySelector(".taskPriority")
 const taskPriority = taskPriorityElement.textContent
 const taskPriorityInput = document.createElement("select")
+taskPriorityElement.innerHTML = ""
 taskPriorityInput.innerHTML = `
 <option value="select" disabled>Select One</option>
-<option value="high">High</option>
-<option value="medium">Medium</option>
-<option value="low">Low</option>`
+<option ${taskPriority === "High" && "selected"} value="High" >High</option>
+<option ${taskPriority === "Medium" && "selected"} value="Medium">Medium</option>
+<option ${taskPriority === "Low" && "selected"} value="Low">Low</option>`
+
+taskPriorityElement.appendChild(taskPriorityInput)
+
+console.log(taskPriority );
+
 
 // Date
 const taskDateElement = tr.querySelector(".taskDate")
 const taskDate = taskDateElement.textContent
+const taskDateInput = document.createElement("input")
+taskDateInput.type = "date"
+taskDateElement.textContent = ""
+taskDateInput.value = taskDate
+taskDateElement.appendChild(taskDateInput)
 
 // action
 const actionElement = tr.querySelector(".action")
 const actionButtons = actionElement.innerHTML
+const saveBtn = document.createElement("button")
+saveBtn.classList.add("btn", "edit")
+saveBtn.innerHTML= `
+<i class="fa-solid fa-floppy-disk"></i>`
+actionElement.innerHTML = ""
+actionElement.appendChild(saveBtn)
 
 
-  console.log(taskName,taskPriority,taskDate,actionButtons);
 }
