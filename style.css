@@ -338,3 +338,23 @@ table tr th:nth-of-type(2) {
 .edit {
   color: #7c00f7;
 }
+/* edit input Filed style */
+.editInputStyle{
+  height: 35px;
+  width: 120px;
+  background-color: unset;
+  border: 2px solid #4c012c;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 15px;
+}
+.editInputStyle:focus{
+  outline: unset;
+  box-shadow: 0px 0px 10px #4c012b70;
+}
+.editInputStylePriority{
+  width: 90px;
+}
+.editInputStyleName{
+  width: 200px;
+}

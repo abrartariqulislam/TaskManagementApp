@@ -104,6 +104,7 @@ function editTask(id){
   const taskNameElement = tr.querySelector(".taskName")
   const taskName = taskNameElement.textContent
   const taskNameInput = document.createElement("input")
+  taskNameInput.classList.add("editInputStyle", "editInputStyleName")
   taskNameElement.textContent = ""
   taskNameInput.value = taskName
   taskNameElement.appendChild(taskNameInput)
@@ -112,6 +113,7 @@ function editTask(id){
 const taskPriorityElement = tr.querySelector(".taskPriority")
 const taskPriority = taskPriorityElement.textContent
 const taskPriorityInput = document.createElement("select")
+taskPriorityInput.classList.add("editInputStyle", "editInputStylePriority")
 taskPriorityElement.innerHTML = ""
 taskPriorityInput.innerHTML = `
 <option value="select" disabled>Select One</option>
@@ -127,6 +129,7 @@ taskPriorityElement.appendChild(taskPriorityInput)
 const taskDateElement = tr.querySelector(".taskDate")
 const taskDate = taskDateElement.textContent
 const taskDateInput = document.createElement("input")
+taskDateInput.classList.add("editInputStyle")
 taskDateInput.type = "date"
 taskDateElement.textContent = ""
 taskDateInput.value = taskDate
