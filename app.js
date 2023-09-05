@@ -1,8 +1,9 @@
 const form = document.getElementById("form");
 const tbody = document.getElementById("tbody");
 const date = document.querySelector("#date")
+const search = document.querySelector("#search_name")
 const toDay = new Date()
-
+console.log(search);
 date.value = toDay.toISOString().slice(0,10)
 
 // form Submit
