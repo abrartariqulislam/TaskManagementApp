@@ -3,7 +3,7 @@ const tbody = document.getElementById("tbody");
 const date = document.querySelector("#date")
 const search = document.querySelector("#search_name")
 const toDay = new Date()
-console.log(search);
+
 date.value = toDay.toISOString().slice(0,10)
 
 // form Submit
@@ -33,8 +33,19 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 // display
-function taskDisplay() {
-  const tasks = getFormLocalStorage();
+function taskDisplay(searchText) {
+  let tasks = getFormLocalStorage();
+  if(searchText){
+    tasks = tasks.filter(task=>{
+      searchText = searchText.trim().toLowerCase()
+      if(task.name.toLowerCase().includes(searchText)) {
+        return true
+      }else{
+        return  false
+      }
+      
+    })
+  }
   tbody.innerHTML =""
   tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
@@ -172,3 +183,9 @@ saveBtn.onclick = function (){
 }
 
 }
+// search
+search.addEventListener("input", function(e){
+  const searchText = e.target.value
+  taskDisplay(searchText)
+})
+
