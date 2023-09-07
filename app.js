@@ -2,6 +2,7 @@ const form = document.getElementById("form");
 const tbody = document.getElementById("tbody");
 const date = document.querySelector("#date")
 const search = document.querySelector("#search_name")
+const filter = document.querySelector("#filtering")
 const toDay = new Date()
 
 date.value = toDay.toISOString().slice(0,10)
@@ -33,8 +34,17 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 // display
-function taskDisplay(searchText) {
+function taskDisplay(searchText,filterValue) {
   let tasks = getFormLocalStorage();
+  if(filterValue){
+    tasks = tasks.filter(task=>{
+      if(task.priority === filterValue) return true
+      else if(task.status === filterValue) return true
+      else if(filterValue === "All") return true
+      else if(filterValue === "Today" && task.date === toDay.toISOString().slice(0,10)) return true
+      return false
+    })
+  }
   if(searchText){
     tasks = tasks.filter(task=>{
       searchText = searchText.trim().toLowerCase()
@@ -48,7 +58,7 @@ function taskDisplay(searchText) {
   }
   tbody.innerHTML =""
 if(tasks.length){
-  tasks?.map(({name,priority,date,status,id}, index) => {
+  tasks?.reverse()?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
     tr.id = `task_${id}`
     tr.innerHTML = `
@@ -193,3 +203,8 @@ search.addEventListener("input", function(e){
   taskDisplay(searchText)
 })
 
+// filter
+filter.addEventListener("change", function(e){
+  const filterValue = e.target.value
+  taskDisplay(undefined,filterValue)
+})
