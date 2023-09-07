@@ -47,6 +47,7 @@ function taskDisplay(searchText) {
     })
   }
   tbody.innerHTML =""
+if(tasks.length){
   tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
     tr.id = `task_${id}`
@@ -75,6 +76,9 @@ function taskDisplay(searchText) {
     </td>`;
     tbody.appendChild(tr);
   });
+}else{
+  tbody.innerHTML =`<p>No Task Found!</p>`
+}
 };
 
 taskDisplay()
