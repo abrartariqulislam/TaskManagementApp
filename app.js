@@ -4,6 +4,7 @@ const date = document.querySelector("#date")
 const search = document.querySelector("#search_name")
 const filter = document.querySelector("#filtering")
 const sort = document.querySelector("#sorting")
+const byDate = document.querySelector("#by_date")
 
   // const toDay = new Date().getHours()+":"+new Date().getMinutes()
   // date.value = toDay
@@ -38,8 +39,16 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 // display
-function taskDisplay(searchText,filterValue,sortValue) {
+function taskDisplay(searchText,filterValue,sortValue,byDateValue) {
   let tasks = getFormLocalStorage();
+// byDateValue
+if(byDateValue){
+  tasks = tasks.filter(task =>{
+    if(task.date === byDateValue) return true
+    return false
+  })
+}
+
   // sort
   if(sortValue){
   tasks = tasks.sort((a,b) =>{
@@ -242,4 +251,10 @@ filter.addEventListener("change", function(e){
 sort.addEventListener("change", function(e){
   const sortValue = e.target.value
   taskDisplay(undefined,undefined,sortValue)
+})
+
+// byDate
+byDate.addEventListener("change", function(e){
+  const byDateValue = e.target.value
+  taskDisplay(undefined,undefined,undefined,byDateValue)
 })
