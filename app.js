@@ -44,11 +44,13 @@ function taskDisplay(searchText,filterValue,sortValue) {
   if(sortValue){
   tasks = tasks.sort((a,b) =>{
     if(sortValue === "newest"){
+      console.log(a.status);
       if(a.date < b.date) return 1
       if(a.date > b.date) return -1
       return 0
     }
     if(sortValue === "oldest"){
+      console.log(b.status);
       if(a.date < b.date) return -1
       if(a.date > b.date) return 1
       return 0
