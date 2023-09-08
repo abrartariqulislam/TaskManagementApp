@@ -3,9 +3,12 @@ const tbody = document.getElementById("tbody");
 const date = document.querySelector("#date")
 const search = document.querySelector("#search_name")
 const filter = document.querySelector("#filtering")
-const toDay = new Date()
 
-date.value = toDay.toISOString().slice(0,10)
+  // const toDay = new Date().getHours()+":"+new Date().getMinutes()
+  // date.value = toDay
+  
+// set today date
+date.value = new Date().toISOString().slice(0,10)
 
 // form Submit
 form.addEventListener("submit", (e) => {
