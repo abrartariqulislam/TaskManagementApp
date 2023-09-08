@@ -3,10 +3,11 @@ const tbody = document.getElementById("tbody");
 const date = document.querySelector("#date")
 const search = document.querySelector("#search_name")
 const filter = document.querySelector("#filtering")
+const sort = document.querySelector("#sorting")
 
   // const toDay = new Date().getHours()+":"+new Date().getMinutes()
   // date.value = toDay
-  
+
 // set today date
 date.value = new Date().toISOString().slice(0,10)
 
@@ -37,17 +38,38 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 // display
-function taskDisplay(searchText,filterValue) {
+function taskDisplay(searchText,filterValue,sortValue) {
   let tasks = getFormLocalStorage();
+  // sort
+  if(sortValue){
+  tasks = tasks.sort((a,b) =>{
+    if(sortValue === "newest"){
+      if(a.date < b.date) return 1
+      if(a.date > b.date) return -1
+      return 0
+    }
+    if(sortValue === "oldest"){
+      if(a.date < b.date) return -1
+      if(a.date > b.date) return 1
+      return 0
+    }
+  })
+  }else{
+    tasks = tasks.reverse()
+  }
+
+  // filter
   if(filterValue){
     tasks = tasks.filter(task=>{
       if(task.priority === filterValue) return true
       else if(task.status === filterValue) return true
       else if(filterValue === "All") return true
-      else if(filterValue === "Today" && task.date === toDay.toISOString().slice(0,10)) return true
+      else if(filterValue === "Today" && task.date === new Date().toISOString().slice(0,10)) return true
       return false
     })
   }
+
+  // search
   if(searchText){
     tasks = tasks.filter(task=>{
       searchText = searchText.trim().toLowerCase()
@@ -59,9 +81,11 @@ function taskDisplay(searchText,filterValue) {
       
     })
   }
+
+  // display
   tbody.innerHTML =""
 if(tasks.length){
-  tasks?.reverse()?.map(({name,priority,date,status,id}, index) => {
+  tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
     tr.id = `task_${id}`
     tr.innerHTML = `
@@ -210,4 +234,10 @@ search.addEventListener("input", function(e){
 filter.addEventListener("change", function(e){
   const filterValue = e.target.value
   taskDisplay(undefined,filterValue)
+})
+
+// sort
+sort.addEventListener("change", function(e){
+  const sortValue = e.target.value
+  taskDisplay(undefined,undefined,sortValue)
 })
