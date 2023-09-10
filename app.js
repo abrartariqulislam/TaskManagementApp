@@ -38,8 +38,11 @@ function addLocalStorage(task) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   taskDisplay();
 }
+
+let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
+
 // display
-function taskDisplay(searchText,filterValue,sortValue,byDateValue) {
+function taskDisplay(searchText = searchTextStore,filterValue = filterValueStore,sortValue = sortValueStore,byDateValue = byDateValueStore) {
   let tasks = getFormLocalStorage();
 // byDateValue
 if(byDateValue){
@@ -238,23 +241,27 @@ saveBtn.onclick = function (){
 // search
 search.addEventListener("input", function(e){
   const searchText = e.target.value
+  searchTextStore = searchText
   taskDisplay(searchText)
 })
 
 // filter
 filter.addEventListener("change", function(e){
   const filterValue = e.target.value
+  filterValueStore = filterValue
   taskDisplay(undefined,filterValue)
 })
 
 // sort
 sort.addEventListener("change", function(e){
   const sortValue = e.target.value
+  sortValueStore = sortValue
   taskDisplay(undefined,undefined,sortValue)
 })
 
 // byDate
 byDate.addEventListener("change", function(e){
   const byDateValue = e.target.value
+  byDateValueStore = byDateValue
   taskDisplay(undefined,undefined,undefined,byDateValue)
 })
