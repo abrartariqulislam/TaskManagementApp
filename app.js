@@ -105,7 +105,7 @@ if(tasks.length){
     tr.innerHTML = `
     <td>
       <label class="checkbox_container">
-        <input type="checkbox">
+        <input type="checkbox" onclick="bulkAction()">
         <span class="checkmark checkmark_1"></span>
       </label>
     </td>
