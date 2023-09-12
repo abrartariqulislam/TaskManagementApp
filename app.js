@@ -39,9 +39,26 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 
+let selectedTask = []
+
+// Make Selected
+function makeSelected(id){
+  if(selectedTask.includes(id)){
+    selectedTask = selectedTask.filter(taskId =>{
+      if(taskId !== id) return true
+      return false
+    })
+  }else{
+    selectedTask.push(id)
+  }
+ 
+  console.log(selectedTask);
+}
+
+
 let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
 
-// display
+// display task list
 function taskDisplay(searchText = searchTextStore,filterValue = filterValueStore,sortValue = sortValueStore,byDateValue = byDateValueStore) {
   let tasks = getFormLocalStorage();
 // byDateValue
@@ -105,7 +122,7 @@ if(tasks.length){
     tr.innerHTML = `
     <td>
       <label class="checkbox_container">
-        <input type="checkbox" onclick="bulkAction()">
+        <input type="checkbox" onclick="makeSelected(${id})">
         <span class="checkmark checkmark_1"></span>
       </label>
     </td>
