@@ -5,6 +5,8 @@ const search = document.querySelector("#search_name")
 const filter = document.querySelector("#filtering")
 const sort = document.querySelector("#sorting")
 const byDate = document.querySelector("#by_date")
+const allSelected = document.querySelector("#allSelected")
+const bulkAction = document.querySelector(".bulk_action")
 
   // const toDay = new Date().getHours()+":"+new Date().getMinutes()
   // date.value = toDay
@@ -39,7 +41,17 @@ function addLocalStorage(task) {
   taskDisplay();
 }
 
+// Bulk Action
 let selectedTask = []
+
+// bulkAction show
+function bulkActionShow(){
+  bulkAction.classList.remove("hide")
+}
+// bulkAction hide
+function bulkActionHide(){
+  bulkAction.classList.add("hide")
+}
 
 // Make Selected
 function makeSelected(id){
@@ -51,9 +63,34 @@ function makeSelected(id){
   }else{
     selectedTask.push(id)
   }
- 
-  console.log(selectedTask);
+ if(selectedTask.length){
+  bulkActionShow()
+ }else{
+  bulkActionHide()
+ }
+
 }
+
+// allSelected
+allSelected.addEventListener("change", function(e){
+  const tasks = tbody.children
+if(e.target.checked){
+  selectedTask = [...tasks].map(taskEl => {
+    const checkBox = taskEl.querySelector("input[type=checkbox]");
+    checkBox.checked = true;
+    return taskEl.dataset.id
+  })
+ 
+}else{
+selectedTask = [];
+[...tasks].map(taskEl =>{
+  const checkBox = taskEl.querySelector("input[type=checkbox]");
+  checkBox.checked = false;
+})
+
+}
+
+})
 
 
 let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
@@ -118,6 +155,7 @@ if(byDateValue){
 if(tasks.length){
   tasks?.map(({name,priority,date,status,id}, index) => {
     const tr = document.createElement("tr");
+    tr.dataset.id = id
     tr.id = `task_${id}`
     tr.innerHTML = `
     <td>

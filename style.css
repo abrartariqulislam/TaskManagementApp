@@ -161,7 +161,7 @@ select:focus {
   background-color: #cbcbaa;
   font-size: 18px;
 }
-.edit_area {
+.bulk_action {
   background-color: #cbcbaa;
   padding:10px 15px;
   border-radius: 5px;
@@ -171,12 +171,15 @@ select:focus {
   justify-content: flex-start;
   gap: 10px;
 }
-.edit_area .edit_area_delete_btn{
+.hide{
+  display: none;
+}
+.bulk_action .edit_area_delete_btn{
   background-color: #8a004e;
   color: #fff;
   border: unset;
 }
-.edit_area input ,.edit_area select{
+.bulk_action input ,.bulk_action select{
   height: 35px;
   background-color: unset;
   border: 2px solid #4c012c;
@@ -184,15 +187,15 @@ select:focus {
   padding: 0 10px;
   font-size: 18px;
 }
-.edit_area input:focus,.edit_area select:focus{
+.bulk_action input:focus,.bulk_action select:focus{
   outline: unset;
 }
-.edit_area .close_area{
+.bulk_action .close_area{
 flex-grow: 1;
 display: flex;
 justify-content: flex-end;
 }
-.edit_area .close_area .close_btn{
+.bulk_action .close_area .close_btn{
   height: 35px;
   width: 35px;
   background-color: red;

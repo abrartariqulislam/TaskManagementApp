@@ -78,7 +78,8 @@
           <input type="date" name="by_date" id="by_date" />
         </div>
       </div>
-      <div class="edit_area">
+      <!-- bulk Action -->
+      <div class="bulk_action hide">
         <input type="button" value="Delete" class="edit_area_delete_btn" />
         <select name="priority" id="priority">
           <option value="select" disabled selected>Change priority</option>
@@ -101,12 +102,13 @@
           <button class="close_btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
+      <!-- display -->
       <table>
         <thead>
           <tr>
             <th>
               <label class="checkbox_container">All
-                <input type="checkbox">
+                <input type="checkbox" id="allSelected">
                 <span class="checkmark"></span>
               </label>
             </th>
