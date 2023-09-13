@@ -7,6 +7,9 @@ const sort = document.querySelector("#sorting")
 const byDate = document.querySelector("#by_date")
 const allSelected = document.querySelector("#allSelected")
 const bulkAction = document.querySelector(".bulk_action")
+const bulkActionCloseBtn = document.querySelector(".close_btn")
+const deleteAll = document.querySelector(".edit_area_delete_btn")
+const changePriority = document.querySelector("#change_priority")
 
   // const toDay = new Date().getHours()+":"+new Date().getMinutes()
   // date.value = toDay
@@ -69,7 +72,7 @@ function makeSelected(id){
  }else{
   bulkActionHide()
  }
-console.log(selectedTask);
+
 }
 
 // allSelected
@@ -96,6 +99,50 @@ bulkActionHide()
 })
 
 // close bulk action
+bulkActionCloseBtn.addEventListener("click", function(e){
+  bulkActionHide()
+  allSelected.checked = false;
+  const tasks = tbody.children;
+  [...tasks].map(taskEl =>{
+    const checkBox = taskEl.querySelector("input[type=checkbox]");
+    checkBox.checked = false;
+  })
+  selectedTask = []
+ 
+})
+
+// delete all
+deleteAll.addEventListener("click", function(e){
+  let tasks = getFormLocalStorage();
+  tasks = tasks.filter(task =>{
+    if(selectedTask.includes(task.id)){
+      return false
+    }else{
+      return true
+    }
+  })
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  taskDisplay();
+  allSelected.checked = false
+  selectedTask = []
+  bulkActionHide()
+})
+
+// change Priority
+changePriority.addEventListener("change", function(e){
+  const PriorityValue = e.target.value
+  let tasks = getFormLocalStorage();
+  tasks = tasks.map(task =>{
+   if(selectedTask.includes(task.id)){
+    task.priority = PriorityValue
+   }
+   return task
+  })
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  taskDisplay();
+})
+
 
 let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
 
@@ -184,6 +231,12 @@ if(tasks.length){
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
     </td>`;
+
+    const checkBox = tr.querySelector("input[type=checkbox]")
+    if(selectedTask.length){
+      checkBox.checked = true
+    }
+    
     tbody.appendChild(tr);
   });
 }else{
