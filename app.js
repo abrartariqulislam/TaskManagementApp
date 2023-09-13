@@ -163,7 +163,7 @@ changeStatus.addEventListener("change", function(e){
   taskDisplay();
 })
 
-// change name selected Task
+// choose name or date
 chooseNameDate.addEventListener("change", function(e){
   const value = e.target.value
   if(value === "Date"){
@@ -172,7 +172,7 @@ chooseNameDate.addEventListener("change", function(e){
     chooseNameDateInput.type = "text"
   }
 })
-// change date selected Task
+// change name and date selected Task
 chooseNameDateInput.addEventListener("keypress", function(e){
   const value = e.target.value
   let tasks = getFormLocalStorage();
@@ -183,6 +183,14 @@ chooseNameDateInput.addEventListener("keypress", function(e){
     }
     return task
     })
+    }
+    if(value && e.target.type === "date"){
+      tasks = tasks.map(task =>{
+        if(selectedTask.includes(task.id)){
+        task.date = value
+        }
+        return task
+        })
     }
     localStorage.setItem("tasks", JSON.stringify(tasks));
     taskDisplay();
