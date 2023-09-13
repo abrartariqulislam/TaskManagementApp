@@ -10,6 +10,9 @@ const bulkAction = document.querySelector(".bulk_action")
 const bulkActionCloseBtn = document.querySelector(".close_btn")
 const deleteAll = document.querySelector(".edit_area_delete_btn")
 const changePriority = document.querySelector("#change_priority")
+const changeStatus = document.querySelector("#change_status")
+const chooseNameDate = document.querySelector("#choose_name_date")
+const chooseNameDateInput = document.querySelector("#choose_name_date_input")
 
   // const toDay = new Date().getHours()+":"+new Date().getMinutes()
   // date.value = toDay
@@ -111,9 +114,11 @@ bulkActionCloseBtn.addEventListener("click", function(e){
  
 })
 
-// delete all
+// delete all selected Task
 deleteAll.addEventListener("click", function(e){
+  const isConfirm = confirm("Are You Delete Task....?")
   let tasks = getFormLocalStorage();
+if(isConfirm){
   tasks = tasks.filter(task =>{
     if(selectedTask.includes(task.id)){
       return false
@@ -127,9 +132,10 @@ deleteAll.addEventListener("click", function(e){
   allSelected.checked = false
   selectedTask = []
   bulkActionHide()
+}
 })
 
-// change Priority
+// change Priority selected Task
 changePriority.addEventListener("change", function(e){
   const PriorityValue = e.target.value
   let tasks = getFormLocalStorage();
@@ -143,6 +149,44 @@ changePriority.addEventListener("change", function(e){
   taskDisplay();
 })
 
+// change status selected Task
+changeStatus.addEventListener("change", function(e){
+  const statusValue = e.target.value
+  let tasks = getFormLocalStorage();
+  tasks = tasks.map(task =>{
+   if(selectedTask.includes(task.id)){
+    task.status = statusValue
+   }
+   return task
+  })
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  taskDisplay();
+})
+
+// change name selected Task
+chooseNameDate.addEventListener("change", function(e){
+  const value = e.target.value
+  if(value === "Date"){
+    chooseNameDateInput.type = "date"
+  }else{
+    chooseNameDateInput.type = "text"
+  }
+})
+// change date selected Task
+chooseNameDateInput.addEventListener("keypress", function(e){
+  const value = e.target.value
+  let tasks = getFormLocalStorage();
+  if(value && e.target.type === "text" && e.key === "Enter"){
+    tasks = tasks.map(task =>{
+    if(selectedTask.includes(task.id)){
+    task.name = value
+    }
+    return task
+    })
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    taskDisplay();
+})
 
 let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
 
