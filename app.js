@@ -55,6 +55,7 @@ function bulkActionHide(){
 
 // Make Selected
 function makeSelected(id){
+  allSelected.checked = false
   if(selectedTask.includes(id)){
     selectedTask = selectedTask.filter(taskId =>{
       if(taskId !== id) return true
@@ -68,7 +69,7 @@ function makeSelected(id){
  }else{
   bulkActionHide()
  }
-
+console.log(selectedTask);
 }
 
 // allSelected
@@ -78,8 +79,10 @@ if(e.target.checked){
   selectedTask = [...tasks].map(taskEl => {
     const checkBox = taskEl.querySelector("input[type=checkbox]");
     checkBox.checked = true;
-    return taskEl.dataset.id
+    const id = taskEl.dataset.id
+    return Number(id)
   })
+  bulkActionShow()
  
 }else{
 selectedTask = [];
@@ -87,11 +90,12 @@ selectedTask = [];
   const checkBox = taskEl.querySelector("input[type=checkbox]");
   checkBox.checked = false;
 })
-
+bulkActionHide()
 }
 
 })
 
+// close bulk action
 
 let searchTextStore, filterValueStore, sortValueStore, byDateValueStore;
 
