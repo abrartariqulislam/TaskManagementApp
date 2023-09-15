@@ -285,14 +285,19 @@ if(tasks.length){
     </td>`;
 
     const checkBox = tr.querySelector("input[type=checkbox]")
-    if(selectedTask.length){
+    if(selectedTask.length && selectedTask.includes(id)){
       checkBox.checked = true
     }
     
     tbody.appendChild(tr);
   });
 }else{
-  tbody.innerHTML =`<p>No Task Found.....!</p>`
+  if(searchText || filterValue || sortValue || byDateValue){
+    tbody.innerHTML =`<p>No Task Found.....!</p>`
+  }else{
+    tbody.innerHTML =`<p>No Task Added</p>`
+  }
+  
 }
 };
 
