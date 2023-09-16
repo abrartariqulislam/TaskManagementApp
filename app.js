@@ -14,9 +14,7 @@ const changeStatus = document.querySelector("#change_status")
 const chooseNameDate = document.querySelector("#choose_name_date")
 const chooseNameDateInput = document.querySelector("#choose_name_date_input")
 
-  // const toDay = new Date().getHours()+":"+new Date().getMinutes()
-  // date.value = toDay
-
+ 
 // set today date
 date.value = new Date().toISOString().slice(0,10)
 
